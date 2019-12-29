@@ -1,0 +1,34 @@
+<!--
+ - Created by vitek on 03.09.2019.
+ -->
+
+<aura:component description="CTAccountListView"
+                controller="CTAccountAppController"
+                implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="AccList"
+                    type="List"/>
+
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"/>
+    <div class="mainDiv">
+        <ui:outputText value="Account List View" class="header"/>
+        <table>
+            <aura:iteration items="{!v.AccList}"
+                            var="acc">
+                <tr>
+                    <td>{!acc.Name}</td>
+                    <td style="padding: 5px 0 5px;">
+                        <lightning:button onclick="{!c.viewContactDetails}"
+                                          value="{!acc}"
+                                          title="View Contacts"
+                                          variant="brand"
+                                          label="View Contacts"/>
+                    </td>
+                </tr>
+            </aura:iteration>
+        </table>
+        <div aura:id="CTContactListView"
+             class="CTContactListView"/>
+    </div>
+</aura:component>
